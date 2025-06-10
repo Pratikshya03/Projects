@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employees</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<br></br>
+	<div class="container">
+
+		<div class="card">
+
+			<div class="card-header">
+				<h2 class="text-center">Employee Management System</h2>
+				<a th:href="@{/register}" class="btn btn-primary">Add Employee</a>
+			</div>
+
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						  <th>S_No</th>
+							<th>First_Name</th>
+							<th>Last_Name</th>
+							<th>Phone_No</th>
+							<th>Email</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="employee,iterStat : ${employees}">
+						 <td th:text="${iterStat.index + 1}"></td>
+							<td th:text="${employee.firstname}"></td>
+							<td th:text="${employee.lastname}"></td>
+							<td th:text="${employee.phn_no}"></td>
+							<td th:text="${employee.email}"></td>
+							<td>
+							
+							<a th:href="@{/updateEmployee/{id}(id =${employee.id})}"
+								class="btn btn-success">Edit</a> 
+								
+								<a th:href="@{/deleteEmployee/{id}(id =${employee.id})}"
+								class="btn btn-danger">Delete</a></td>
+
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+</body>
+</html>
